@@ -143,7 +143,8 @@ void Voigt::setDY(const double* P, const int nXY, const double* X, double* Jacob
 
 Mapped Voigt::outcome(const Fitted& F) const
 {
-    double fwhm = FindFwhm::fromFitted(F).value();
+    //double fwhm = FindFwhm::fromFitted(F).value();
+    double fwhm = voigt_hwhm(deg{F.parErrAt(1)},  deg{F.parValAt(1)});
 
     Mapped ret;
     ret.set("center", deg{F.parValAt(0)});
@@ -179,7 +180,6 @@ void FindFwhm::setDY(const double* P, const int nXY, const double* X, double* Ja
 DoubleWithError FindFwhm::fromFitted(const Fitted& F) {
     double p0 = F.parValAt(0);
     double ampl = F.y(p0);
-
     Curve curve;
     curve.append(p0, ampl/2.0);
 

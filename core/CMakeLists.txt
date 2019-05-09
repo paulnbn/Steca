@@ -11,7 +11,7 @@ target_include_directories(${lib}
     )
 
 message(STATUS "core to be linked with libcerf: ${Cerf_LIBRARIES}")
-#message(STATUS "core to be linked with lmfit:   ${LMFit_LIBRARIES}")
+message(STATUS "core to be linked with lmfit:   ${LMFit_LIBRARIES}")
 message(STATUS "core to be linked with yaml:    ${yaml_LIBRARIES}")
 
 target_link_libraries(${lib}
@@ -22,6 +22,6 @@ target_link_libraries(${lib}
     caress_loader
     mar_loader
     ${Cerf_LIBRARIES}
-#    ${LMFit_LIBRARIES}
+    ${LMFit_LIBRARIES}
     ${yaml_LIBRARIES}
     )
